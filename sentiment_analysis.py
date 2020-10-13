@@ -54,10 +54,12 @@ topics_to_analyze = {
     "guns": ["gun", "rifle", "protect", "police", "officer"],
     "economy": ["tax", "rates", "money", "economy", "growth", "relief"],
     "school": ["education", "college", "elementary", "opportunity"],
+    "climate": ["climate", "environment", "global warming", "ecosystem", "fire"],
+
 }
 
-f = open('./sununu_speech', "r")
-sununu_speech = f.read()
-sununu_speech = sununu_speech.split(".")
-sununu_sentiment = get_sentiment_on_speech(sununu_speech, topics_to_analyze)
-print(sununu_sentiment)
+f = open('./inslee_speech.txt', "r")
+inslee = f.read()
+inslee = inslee.split(".")
+inslee_sentiment = get_sentiment_on_speech(inslee, topics_to_analyze)
+print(inslee_sentiment)
