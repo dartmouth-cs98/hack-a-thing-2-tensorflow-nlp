@@ -7,7 +7,9 @@ This is our attempt to learn some basic ML stuff and try out different models fo
 
 Then we started topic extraction, starting with an LDA model, using a set of headlines from ABC. While doing topic extraction with this data set, we didn't think the classification was very good because it seemed like a lot of headlines got lumped into incorrect topics. We hypothosized that this was because the data set was too broad. We decided to try the same thing on a set of trump tweets, and found the topic extraction ran slightly more accurately. 
 
-The last model Emma did, she played around with watson sentiment analysis. She ran sentiment analysis on a corpus corresponding to a predetermined set of topics.
+We played around with watson sentiment analysis. She ran sentiment analysis on a corpus corresponding to a predetermined set of topics.
+
+Finally we also ran an NMF model for topic extraction on speeches from this year's DNC. This wored a little bit better than the LDA model, but we definitely need to change the inputs to the model from the tutorial. 
 
 We are planning to use these sentiment analysis tools on data we scrape to determine the stance politicians take on various issues. For local elections, small time politicians may not have an actual list of their stances posted, so it may be up to us to try to decipher what they think about important issues.
 

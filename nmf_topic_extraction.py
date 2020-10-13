@@ -40,6 +40,17 @@ def find_best_num_topics(dictionary, corpus, topic_nums):
             corpus=corpus,
             num_topics=num,
             id2word=dictionary,
+            chunksize=10,
+            passes=5,
+            kappa=.1,
+            minimum_probability=0.01,
+            w_max_iter=300,
+            w_stop_condition=0.0001,
+            h_max_iter=100,
+            h_stop_condition=0.001,
+            eval_every=10,
+            normalize=True,
+            random_state=42
         )
         # print(nmf.print_topics(num, 5))
         # Run the coherence model to get the score
@@ -76,7 +87,7 @@ if __name__ == '__main__':
     tfidf_vectorizer = TfidfVectorizer(
         min_df=3,
         max_df=0.85,
-        max_features=5000,
+        max_features=1000,
         ngram_range=(1, 2),
         preprocessor=' '.join
     )   
@@ -87,14 +98,13 @@ if __name__ == '__main__':
     dictionary.filter_extremes(
         no_below=3,
         no_above=0.85,
-        keep_n=5000
+        keep_n=1000
     )
     # Create the bag-of-words format (list of (token_id, token_count))
     corpus = [dictionary.doc2bow(text) for text in texts]
 
     # Create a list of the topic numbers we want to try
-    # topic_nums = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
-    topic_nums = [5, 10, 15]
+    topic_nums = [3, 5, 10, 15, 20]
     coherence_scores = find_best_num_topics(dictionary, corpus, topic_nums)
     scores = list(zip(topic_nums, coherence_scores))
     print(scores)
@@ -124,7 +134,6 @@ if __name__ == '__main__':
     # Get the top predicted topic
     predicted_topics = [np.argsort(each)[::-1][0] for each in X_new]
     print(predicted_topics)
-    print(len(new_text))
-    print(len(predicted_topics))
+
 
 
